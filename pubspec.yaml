@@ -14,20 +14,24 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Firebase packages
-  firebase_core: ^2.10.0
-  firebase_auth: ^4.10.0
-  cloud_firestore: ^5.0.0
+  # Firebase packages (desactivado si no se usará)
+  # firebase_core: ^2.10.0
+  # firebase_auth: ^4.10.0
+  # cloud_firestore: ^5.0.0
 
   # Go Router for navigation
   go_router: ^6.0.0
 
-  # State management: Riverpod or Provider
+  # State management: Riverpod o Provider
   provider: ^6.0.0
   riverpod: ^2.0.0
 
   # Icon library
   cupertino_icons: ^1.0.8
+
+  # Base de datos SQLite
+  sqflite: ^2.0.0+4
+  path_provider: ^2.0.9  # Para obtener el directorio donde guardar la base de datos
 
 dev_dependencies:
   flutter_test:
@@ -39,11 +43,11 @@ dev_dependencies:
 flutter:
   uses-material-design: true
 
-  # To add assets to your application, add an assets section like this:
+  # Para agregar assets (imágenes) a tu aplicación
   assets:
     - assets/images/  # Si tienes imágenes en tu proyecto, esta carpeta es un ejemplo.
 
-  # To add custom fonts, you can define them here.
+  # Para agregar fuentes personalizadas
   # fonts:
   #   - family: Schyler
   #     fonts:
