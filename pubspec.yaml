@@ -1,0 +1,57 @@
+name: dkashstore
+description: "Tu estilo, tu personalidad"
+# The following line prevents the package from being accidentally published to
+# pub.dev using `flutter pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+version: 1.0.0+1
+
+environment:
+  sdk: ^3.7.0
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+  # Firebase packages
+  firebase_core: ^2.10.0
+  firebase_auth: ^4.10.0
+  cloud_firestore: ^5.0.0
+
+  # Go Router for navigation
+  go_router: ^6.0.0
+
+  # State management: Riverpod or Provider
+  provider: ^6.0.0
+  riverpod: ^2.0.0
+
+  # Icon library
+  cupertino_icons: ^1.0.8
+
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+
+  # Linter recommendations
+  flutter_lints: ^5.0.0
+
+flutter:
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section like this:
+  assets:
+    - assets/images/  # Si tienes imágenes en tu proyecto, esta carpeta es un ejemplo.
+
+  # To add custom fonts, you can define them here.
+  # fonts:
+  #   - family: Schyler
+  #     fonts:
+  #       - asset: fonts/Schyler-Regular.ttf
+  #       - asset: fonts/Schyler-Italic.ttf
+  #         style: italic
+  #   - family: Trajan Pro
+  #     fonts:
+  #       - asset: fonts/TrajanPro.ttf
+  #       - asset: fonts/TrajanPro_Bold.ttf
+  #         weight: 700
