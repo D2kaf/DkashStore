@@ -1,37 +1,37 @@
 class Product {
   final int? id;
   final String name;
-  final String description;
   final double price;
+  final String description;
   final String imageUrl;
 
   Product({
     this.id,
     required this.name,
-    required this.description,
     required this.price,
+    required this.description,
     required this.imageUrl,
   });
 
-  // Convertir un objeto Product a un mapa para la base de datos
+  // Método para convertir de Mapa a Product
+  factory Product.fromMap(Map<String, dynamic> map) {
+    return Product(
+      id: map['id'], // Verifica que 'id' existe en la base de datos
+      name: map['name'] ?? '',
+      price: (map['price'] as num).toDouble(), // Asegura que sea double
+      description: map['description'] ?? '',
+      imageUrl: map['image_url'] ?? '',
+    );
+  }
+
+  // Método para convertir de Product a Mapa
   Map<String, dynamic> toMap() {
     return {
       'id': id,
       'name': name,
-      'description': description,
       'price': price,
-      'imageUrl': imageUrl,
+      'description': description,
+      'image_url': imageUrl,
     };
-  }
-
-  // Convertir un mapa de la base de datos a un objeto Product
-  factory Product.fromMap(Map<String, dynamic> map) {
-    return Product(
-      id: map['id'],
-      name: map['name'],
-      description: map['description'],
-      price: map['price'],
-      imageUrl: map['imageUrl'],
-    );
   }
 }

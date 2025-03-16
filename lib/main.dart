@@ -1,27 +1,35 @@
 import 'package:flutter/material.dart';
-import 'screens/product_list_screen.dart'; // Importa la pantalla de lista de productos
+import 'screens/main_screen.dart';
+import 'screens/product_detail_screen.dart';
+import 'models/product.dart';
 
 void main() {
-  runApp(MyApp());
+  runApp(const MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({super.key});
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Dkash Store',
-      theme: ThemeData(
-        brightness: Brightness.dark,  // Tema oscuro
-        primaryColor: Colors.black,   // Color primario negro
-        scaffoldBackgroundColor: Colors.black,  // Fondo negro
-        textTheme: TextTheme(
-          titleLarge: TextStyle(color: Colors.white), // Título grande en blanco
-          bodyLarge: TextStyle(color: Colors.white),  // Texto de cuerpo grande en blanco
-          bodyMedium: TextStyle(color: Colors.white), // Texto de cuerpo medio en blanco
-          bodySmall: TextStyle(color: Colors.white),  // Texto de cuerpo pequeño en blanco
+      theme: ThemeData.dark().copyWith(
+        primaryColor: Colors.black,
+        scaffoldBackgroundColor: Colors.black,
+        textTheme: const TextTheme(
+          bodyLarge: TextStyle(color: Colors.white),
+          bodyMedium: TextStyle(color: Colors.white),
         ),
       ),
-      home: ProductListScreen(),  // Establece la pantalla de lista de productos como pantalla inicial
+      initialRoute: '/',
+      routes: {
+        '/': (context) => const MainScreen(),
+        '/productDetail': (context) => ProductDetailScreen(
+              product: ModalRoute.of(context)!.settings.arguments as Product,
+            ),
+      },
     );
   }
 }

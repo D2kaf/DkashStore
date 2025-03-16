@@ -1,62 +1,68 @@
 import 'package:flutter/material.dart';
-import '../models/product.dart';  // Asegúrate de tener la clase Product importada
+import '../models/product.dart';
+import '../database/db_helper.dart';
+import 'payment_screen.dart';
 
 class ProductDetailScreen extends StatelessWidget {
   final Product product;
 
-  // Recibimos el producto desde la pantalla anterior
-  ProductDetailScreen({required this.product});
+  const ProductDetailScreen({super.key, required this.product});
+
+  Future<void> _addToCart(BuildContext context) async {
+    final cartItem = {
+      'id': product.id, 
+      'name': product.name,
+      'price': product.price,
+      'quantity': 1,
+    };
+
+    await DBHelper.instance.insertCartItem(cartItem);
+
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Producto agregado al carrito')),
+    );
+  }
+
+  void _buyNow(BuildContext context) {
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+        builder: (context) => PaymentScreen(product: product),
+      ),
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text(product.name),  // Mostramos el nombre del producto en la AppBar
-      ),
+      appBar: AppBar(title: Text(product.name)),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            // Imagen del producto
-            Image.network(
-              product.imageUrl,  // La URL de la imagen del producto
-              height: 200,
-              width: double.infinity,
-              fit: BoxFit.cover,
-            ),
-            SizedBox(height: 16),
-            
-            // Nombre del producto
-            Text(
-              product.name,
-              style: Theme.of(context).textTheme.titleLarge,  // Usamos titleLarge en lugar de headline5
-            ),
-            SizedBox(height: 8),
-
-            // Descripción del producto
-            Text(
-              product.description,
-              style: Theme.of(context).textTheme.bodyMedium,  // bodyMedium está bien para descripción
-            ),
-            SizedBox(height: 16),
-
-            // Precio del producto
-            Text(
-              '\$${product.price}',
-              style: Theme.of(context).textTheme.titleMedium,  // Cambié headline5 por titleMedium
-            ),
-            SizedBox(height: 16),
-
-            // Botón para agregar al carrito
+            Image.network(product.imageUrl, width: double.infinity, height: 200, fit: BoxFit.cover),
+            const SizedBox(height: 10),
+            Text(product.name, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            const SizedBox(height: 5),
+            Text('\$${product.price}', style: const TextStyle(fontSize: 18, color: Colors.green)),
+            const SizedBox(height: 10),
+            Text(product.description, style: const TextStyle(fontSize: 16, color: Colors.grey)),
+            const SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                // Lógica para agregar al carrito
-                ScaffoldMessenger.of(context).showSnackBar(
-                  SnackBar(content: Text('${product.name} agregado al carrito')),
-                );
-              },
-              child: Text('Agregar al carrito'),
+              onPressed: () => _addToCart(context),
+              child: const Text('Agregar al Carrito'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => _buyNow(context),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.red),
+              child: const Text('Comprar Ahora'),
+            ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Volver'),
             ),
           ],
         ),

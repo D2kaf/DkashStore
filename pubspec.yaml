@@ -1,10 +1,8 @@
 name: dkashstore
 description: "Tu estilo, tu personalidad"
-# The following line prevents the package from being accidentally published to
-# pub.dev using `flutter pub publish`. This is preferred for private packages.
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-# The following defines the version and build number for your application.
+publish_to: 'none'
+
 version: 1.0.0+1
 
 environment:
@@ -14,48 +12,32 @@ dependencies:
   flutter:
     sdk: flutter
 
-  # Firebase packages (desactivado si no se usará)
-  # firebase_core: ^2.10.0
-  # firebase_auth: ^4.10.0
-  # cloud_firestore: ^5.0.0
-
-  # Go Router for navigation
+  # Navegación
   go_router: ^6.0.0
 
-  # State management: Riverpod o Provider
+  # State management
   provider: ^6.0.0
   riverpod: ^2.0.0
 
-  # Icon library
+  # Íconos
   cupertino_icons: ^1.0.8
 
-  # Base de datos SQLite
+  # Base de datos SQLite (deshabilitado si no se usa)
   sqflite: ^2.0.0+4
-  path_provider: ^2.0.9  # Para obtener el directorio donde guardar la base de datos
+  path_provider: ^2.0.9  
+
+  # Carrusel de imágenes
+  carousel_slider: ^5.0.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
-
-  # Linter recommendations
   flutter_lints: ^5.0.0
 
 flutter:
   uses-material-design: true
 
-  # Para agregar assets (imágenes) a tu aplicación
+  # Archivos de imágenes
   assets:
-    - assets/images/  # Si tienes imágenes en tu proyecto, esta carpeta es un ejemplo.
-
-  # Para agregar fuentes personalizadas
-  # fonts:
-  #   - family: Schyler
-  #     fonts:
-  #       - asset: fonts/Schyler-Regular.ttf
-  #       - asset: fonts/Schyler-Italic.ttf
-  #         style: italic
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+    - assets/images/Dkashbasica.png
+    - assets/images/Dkashbasicaback.png
