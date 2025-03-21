@@ -41,7 +41,7 @@ class HomeScreen extends StatelessWidget {
                 child: const Text(
                   'Bienvenido a Dkash Store',
                   style: TextStyle(
-                    fontSize: 26,
+                    fontSize: 30,
                     fontWeight: FontWeight.bold,
                     color: Colors.white,
                   ),
@@ -54,7 +54,7 @@ class HomeScreen extends StatelessWidget {
               // Carrusel de imágenes
               CarouselSlider(
                 options: CarouselOptions(
-                  height: 300,
+                  height: 320,
                   autoPlay: true,
                   enlargeCenterPage: true,
                   autoPlayInterval: const Duration(seconds: 3),
@@ -63,6 +63,7 @@ class HomeScreen extends StatelessWidget {
                 items: [
                   'assets/images/Dkashbasica.png',
                   'assets/images/Dkashbasicaback.png',
+                  'assets/images/model.png',
                 ].map((imagePath) {
                   return ClipRRect(
                     borderRadius: BorderRadius.circular(0), // Elimina los bordes redondeados

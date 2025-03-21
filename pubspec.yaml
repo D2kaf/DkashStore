@@ -41,3 +41,5 @@ flutter:
   assets:
     - assets/images/Dkashbasica.png
     - assets/images/Dkashbasicaback.png
+    - assets/images/model.png
+    - assets/images/admin.png

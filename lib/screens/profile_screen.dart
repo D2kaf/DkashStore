@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 class ProfileScreen extends StatelessWidget {
   const ProfileScreen({super.key});
@@ -17,17 +18,17 @@ class ProfileScreen extends StatelessWidget {
             Center(
               child: CircleAvatar(
                 radius: 50,
-                backgroundImage: NetworkImage('https://via.placeholder.com/150'),
+                backgroundImage: AssetImage('assets/images/admin.png'),
               ),
             ),
             const SizedBox(height: 20),
-            Text('Nombre: Usuario Ejemplo', style: TextStyle(fontSize: 18)),
+            Text('Nombre: Admin', style: TextStyle(fontSize: 18)),
             const SizedBox(height: 10),
-            Text('Correo: usuario@example.com', style: TextStyle(fontSize: 18)),
+            Text('Correo: Admin@dkash.com', style: TextStyle(fontSize: 18)),
             const SizedBox(height: 10),
-            Text('Teléfono: +123456789', style: TextStyle(fontSize: 18)),
+            Text('Teléfono: +573155881952', style: TextStyle(fontSize: 18)),
             const SizedBox(height: 10),
-            Text('Dirección: Calle Falsa 123', style: TextStyle(fontSize: 18)),
+            Text('Dirección: Calle 82 #21-73', style: TextStyle(fontSize: 18)),
             const SizedBox(height: 20),
             Center(
               child: ElevatedButton(
