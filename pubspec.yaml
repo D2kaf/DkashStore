@@ -42,10 +42,7 @@ flutter:
   assets:
     - assets/images/Dkashbasicafront.png
     - assets/images/Dkashbasicaback.png
-<<<<<<< HEAD
     - assets/images/model.png
     - assets/images/admin.png
-=======
     - assets/images/catalog1.png
     - assets/images/COMPRE_AHORA.png
->>>>>>> main
