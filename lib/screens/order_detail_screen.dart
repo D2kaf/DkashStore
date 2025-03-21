@@ -1,56 +1,49 @@
 import 'package:flutter/material.dart';
-import '../database/db_helper.dart';
+import '../models/product.dart';
 
-class OrderDetailScreen extends StatefulWidget {
-  final int orderId;
+class PaymentScreen extends StatelessWidget {
+  final Product product;
 
-  const OrderDetailScreen({Key? key, required this.orderId}) : super(key: key);
+  const PaymentScreen({super.key, required this.product});
 
-  @override
-  _OrderDetailScreenState createState() => _OrderDetailScreenState();
-}
+  void _processPayment(BuildContext context) {
+    // Simulación de pago
+    ScaffoldMessenger.of(context).showSnackBar(
+      const SnackBar(content: Text('Pago realizado con éxito')),
+    );
 
-class _OrderDetailScreenState extends State<OrderDetailScreen> {
-  List<Map<String, dynamic>> _orderItems = [];
-
-  @override
-  void initState() {
-    super.initState();
-    _loadOrderItems();
-  }
-
-  Future<void> _loadOrderItems() async {
-    try {
-      final items = await DBHelper.instance.getOrderItems(widget.orderId);
-      setState(() {
-        _orderItems = items;
-      });
-    } catch (e) {
-      print('Error obteniendo detalles del pedido: ${e.toString()}');
-    }
+    // Volver a la pantalla principal después del pago
+    Future.delayed(const Duration(seconds: 2), () {
+      Navigator.popUntil(context, (route) => route.isFirst);
+    });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Detalles del Pedido'),
-      ),
-      body: _orderItems.isEmpty
-          ? const Center(child: CircularProgressIndicator())
-          : ListView.builder(
-              itemCount: _orderItems.length,
-              itemBuilder: (context, index) {
-                final item = _orderItems[index];
-                return Card(
-                  child: ListTile(
-                    title: Text(item['name']),
-                    subtitle: Text('Cantidad: ${item['quantity']}'),
-                    trailing: Text('\$${item['price'] * item['quantity']}'),
-                  ),
-                );
-              },
+      appBar: AppBar(title: const Text('Pago')),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Text('Producto: ${product.name}', style: const TextStyle(fontSize: 18)),
+            const SizedBox(height: 10),
+            Text('Precio: \$${product.price}', style: const TextStyle(fontSize: 18, color: Colors.green)),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () => _processPayment(context),
+              style: ElevatedButton.styleFrom(backgroundColor: Colors.green),
+              child: const Text('Pagar Ahora'),
             ),
+            const SizedBox(height: 10),
+            ElevatedButton(
+              onPressed: () => Navigator.pop(context),
+              child: const Text('Cancelar'),
+            ),
+          ],
+        ),
+      ),
     );
   }
 }
