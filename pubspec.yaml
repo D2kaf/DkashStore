@@ -28,6 +28,7 @@ dependencies:
 
   # Carrusel de imágenes
   carousel_slider: ^5.0.0
+  google_fonts: ^6.2.1
 
 dev_dependencies:
   flutter_test:
@@ -39,7 +40,12 @@ flutter:
 
   # Archivos de imágenes
   assets:
-    - assets/images/Dkashbasica.png
+    - assets/images/Dkashbasicafront.png
     - assets/images/Dkashbasicaback.png
+<<<<<<< HEAD
     - assets/images/model.png
     - assets/images/admin.png
+=======
+    - assets/images/catalog1.png
+    - assets/images/COMPRE_AHORA.png
+>>>>>>> main

@@ -10,7 +10,7 @@ class ProductDetailScreen extends StatelessWidget {
 
   Future<void> _addToCart(BuildContext context) async {
     final cartItem = {
-      'id': product.id, 
+      'id': product.id,
       'name': product.name,
       'price': product.price,
       'quantity': 1,
@@ -35,19 +35,41 @@ class ProductDetailScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text(product.name)),
+      backgroundColor: Colors.white, // Fondo blanco
+      appBar: AppBar(
+        title: Text(product.name),
+        backgroundColor: Colors.black, // AppBar negro
+        foregroundColor: Colors.white, // Texto blanco en AppBar
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Image.network(product.imageUrl, width: double.infinity, height: 200, fit: BoxFit.cover),
+            Container(
+              color: Colors.white, // Asegura que el fondo de la imagen sea blanco
+              child: Image.asset(
+                product.imageUrl,
+                width: double.infinity,
+                height: 200,
+                fit: BoxFit.contain, // Evita que la imagen se recorte
+              ),
+            ),
             const SizedBox(height: 10),
-            Text(product.name, style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold)),
+            Text(
+              product.name,
+              style: const TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.black),
+            ),
             const SizedBox(height: 5),
-            Text('\$${product.price}', style: const TextStyle(fontSize: 18, color: Colors.green)),
+            Text(
+              '\$${product.price}',
+              style: const TextStyle(fontSize: 18, color: Colors.green),
+            ),
             const SizedBox(height: 10),
-            Text(product.description, style: const TextStyle(fontSize: 16, color: Colors.grey)),
+            Text(
+              product.description,
+              style: const TextStyle(fontSize: 16, color: Colors.grey),
+            ),
             const SizedBox(height: 20),
             ElevatedButton(
               onPressed: () => _addToCart(context),
